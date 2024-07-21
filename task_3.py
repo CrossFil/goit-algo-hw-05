@@ -1,6 +1,5 @@
 import timeit
 
-# Algorithm Implementations
 def boyer_moore(text, pattern):
     m = len(pattern)
     n = len(text)
@@ -96,23 +95,19 @@ def rabin_karp(text, pattern):
     
     return -1
 
-# Measure execution time
 def measure_time(algorithm, text, pattern):
     setup_code = f'from __main__ import {algorithm}, text, pattern'
     stmt = f'{algorithm}(text, pattern)'
     times = timeit.repeat(stmt, setup=setup_code, repeat=3, number=1000)
     return min(times)
 
-# Load articles
 def load_file(file_path, encoding='latin-1'):
     with open(file_path, 'r', encoding=encoding) as file:
         return file.read()
 
-# Ensure file paths are correct
 article1_path = 'article1.txt'
 article2_path = 'article2.txt'
 
-# Debugging print statements
 print("Loading articles...")
 
 try:
@@ -130,7 +125,7 @@ except Exception as e:
     article2 = None
 
 if article1 and article2:
-    # Substrings
+
     existing_substring = "example"
     non_existing_substring = "notpresent"
 
@@ -151,7 +146,7 @@ if article1 and article2:
                 results.append((text[:30], pattern, algo, time))
                 print(f"{algo} with pattern '{pattern}' took {time:.6f} seconds.")
 
-    # Display the results
+  
     print("Results:")
     for result in results:
         print(f'Pattern: {result[1]} Algorithm: {result[2]} Time: {result[3]:.6f} seconds')
